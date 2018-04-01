@@ -1,0 +1,122 @@
+{% extends "chatbot_website/base.html" %}
+
+<title>Наше время</title>
+{% block content %}
+    <div class="article-one">
+    {% if article_one %}
+        {% for article_one in article_one %}
+            <div class="text-center">
+                <h2>{{ article_one.title }}</h2>
+            </div>
+            <div class="row featurette">
+                <div class="col-md-9">
+                    <p class="paragraph-one">{{ article_one.text }}</p>
+                </div>
+                <div class="col-md-3"  >
+                        <img  src="{{ article_one.image.url}}" >
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="row">
+            <div class="col-sm">
+                <p>No articles are available.</p>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+
+    <div class="article-two">
+    {% if article_two %}
+        {% for article_two in article_two %}
+            <div class="text-center">
+                <h2>{{ article_two.title }}</h2>
+            </div>
+            <div class="row featurette">
+                <div class="col-md-9">
+                    <p class="paragraph-two">{{ article_two.text }}</p>
+                </div>
+                <div class="col-md-3"  >
+                        <img  src="{{ article_two.image.url}}" >
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="row">
+            <div class="col-sm">
+                <p>No articles are available.</p>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+
+    <div class="article-one">
+    {% if article_five %}
+        {% for article_five in article_five %}
+            <div class="text-center">
+                <h2>{{ article_five.title_first }}</h2>
+            </div>
+            <div class="row featurette">
+                <p class="paragraph-one">{{ article_five.text_first }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="row">
+            <div class="col-sm">
+                <p>No articles are available.</p>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+
+
+    <div class="article-two">
+    {% if article_four %}
+        {% for article_four in article_four %}
+            <div class="text-center">
+                <h2>{{ article_four.title }}</h2>
+            </div>
+            <div class="row featurette">
+                <div class="col-md-9">
+                    <p class="paragraph-two">{{ article_four.text }}</p>
+                </div>
+                <div class="col-md-3"  >
+                        <img  src="{{ article_four.image.url}}" >
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="row">
+            <div class="col-sm">
+                <p>No articles are available.</p>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+
+    <div class="article-three">
+    {% if article_three %}
+        {% for article_three in article_three %}
+            <div class="text-center">
+                <h4>{{ article_three.title }}</h4>
+            </div>
+            <div class="row featurette">
+                <div class="col-md-9">
+                    <p class="paragraph-three" >{{ article_three.text }}</p>
+                </div>
+                <div class="col-md-3"  >
+                        <img  src="{{ article_three.image.url}}" >
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="row">
+            <div class="col-sm">
+                <p>No articles are available.</p>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+
+{% endblock %}
+

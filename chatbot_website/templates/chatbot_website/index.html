@@ -1,0 +1,94 @@
+{% extends "chatbot_website/base.html" %}
+
+{% block content %}
+    <div class="article-one">
+    {% if article_one %}
+        {% for article_one in article_one %}
+            <div class="text-center">
+                <h2>{{ article_one.title }}</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-9">
+                    <p class="paragraph-one">{{ article_one.text }}</p>
+                </div>
+                <div class="col-md-3"  >
+                        <img  src="{{ article_one.image.url}}" >
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="row">
+            <div class="col-sm">
+                <p>No articles are available.</p>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+
+    <div class="article-two">
+    {% if article_two %}
+        {% for article_two in article_two %}
+        <h2 class="text-center">{{ article_two.title }}</h2>
+        <div class="row">
+            <div class="col-lg-4">
+                <img class="text-center" src="{{ article_two.image_first.url}}" >
+                <h2 class="text-center">{{ article_two.title_first }}</h2>
+                <p class="paragraph-two">{{ article_two.text_first }}</p>
+            </div>
+            <div class="col-lg-4">
+                <img src="{{ article_two.image_second.url}}"  >
+                <h2>{{ article_two.title_second }}</h2>
+                <p class="paragraph-two">{{ article_two.text_second }}</p>
+            </div>
+            <div class="col-lg-4">
+                <img src="{{ article_two.image_third.url}}"   >
+                <h2>{{ article_two.title_third }}</h2>
+                <p class="paragraph-two">{{ article_two.text_third }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="row">
+            <div class="col-sm">
+                <p>No articles are available.</p>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+
+    <div class="article-three">
+    {% if article_three %}
+        {% for article_three in article_three %}
+            <div class="text-center">
+                <h3>{{ article_three.title }}</h3>
+            </div>
+            <div class="row featurette">
+                <div class="col-md-9" class="paddright">
+                    <h4 >{{ article_three.title_first }}</h4>
+                    <p class="paragraph-three">{{ article_three.text_first }}</p>
+                </div>
+                <div  class="col-md-3"  >
+                        <img class="image-article-one" src="{{ article_three.image_first.url}}" >
+                </div>
+                <hr>
+            </div>
+            <div class="row featurette">
+                    <div class="col-md-9 order-md-2">
+                    <h4 class="text-right">{{ article_three.title_second }}</h4>
+                    <p class="paragraph-three">{{ article_three.text_second }}</p>
+                </div>
+                <div class="col-md-3 order-md-1" class="imagearticlethree" >
+                        <img class="image-article-one" src="{{ article_three.image_second.url}}" >
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="row">
+            <div class="col-sm">
+                <p class="paragraph-three" >No articles are available.</p>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+{% endblock %}
+

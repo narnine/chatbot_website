@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Raleway|Play|Roboto|Merriweather|Montserrat|Share Tech');
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body {
+    font-weight: 300;
+    font-size: 16px;
+    color: #555;
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+}
+/* Navbar */
+@media (min-width: 768px)
+.navbar-expand-md .navbar-collapse {
+    display: -webkit-box!important;
+    display: -ms-flexbox!important;
+    display: flex!important;
+    -ms-flex-preferred-size: auto;
+    flex-basis: auto;
+    padding-top:10px;
+}
+
+
+
+/* Carousel b */
+
+.carousel {
+  margin-bottom: 0rem;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  bottom: 3rem;
+  z-index: 10;
+}
+#navbarCollapse{
+    font-family:'Share Tech';
+    font-size:25px;
+    font-weight:300;
+    padding-top:10px;
+}
+
+#logotip{
+    font-size: 2.5em;
+    font-family: 'Play', sans-serif;
+    font-weight: 900;
+}
+
+#logotip:hover{
+    transition: all 0.5s ease-out;
+    color: #0069d9;
+}
+#logotip > img{
+    height: 45px;
+    margin-left:-11px;
+    margin-right: -11px;
+    box-shadow: 0 1px 0px #378ab4, 1px 0 0px #5dabcd, 1px 2px 1px #378ab4, 2px 1px 1px #5dabcd, 2px 3px 2px #378ab4, 3px 2px 2px #5dabcd, 3px 4px 2px #378ab4, 4px 3px 3px #5dabcd, 4px 5px 3px #378ab4, 5px 4px 2px #5dabcd, 5px 6px 2px #378ab4, 6px 5px 2px #5dabcd, 6px 7px 1px #378ab4, 7px 6px 1px #5dabcd, 7px 8px 0px #378ab4, 8px 7px 0px #5dabcd;
+    }
+/* Declare heights because of positioning of img element */
+.carousel-item {
+  height: 45rem;
+  background-color: #777;
+}
+.carousel-item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 45rem;
+}
+
+
+/*content*/
+.row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+h1,
+.h1{
+    font-family: 'Montserrat';
+    font-size: 2rem;
+    letter-spacing: 1.25px;
+    color: #fff;
+    font-weight: 400;
+    margin: 0 0 50px;
+    line-height: 1.2;
+}
+
+h3,
+.h3{
+    padding-top:10px;
+    font-size: 2rem;
+    color: #fff;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+h4,
+.h4{
+    padding-top:10px;
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+
+
+.paragraph-one {
+    font-family:'Merriweather', sans;
+    padding-left: 15px;
+    line-height: 28px;
+    font-weight: 400;
+    font-size: 1em;
+    margin-bottom: 25px;
+    text-align:justify;
+
+}
+
+.paragraph-two {
+    font-family:'Merriweather', sans;
+    padding-left: 15px;
+    line-height: 28px;
+    font-weight: 400;
+    font-size: 1em;
+    margin-bottom: 25px;
+}
+
+.paragraph-three{
+    font-family:'Merriweather', sans;
+    color:#fff;
+    line-height: 28px;
+    font-weight: 400;
+    font-size: 1em;
+    text-align:justify;
+}
+
+.paddright{
+padding-right:25px;
+}
+
+hr {
+    width: 60%;
+    height:2px;
+    background-color: #fff;
+}
+.article-one {
+    background-color: #f2f2f2;
+}
+
+
+
+.article-two {
+    padding-top: 0.5 em;
+    background-color: #e0e0e0;
+}
+
+.col-lg-4 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+
+
+.article-three{
+background-color: #2c3e50;
+}
+
+.text-right {
+    text-align: right!important;
+
+}
+
+#footer{
+    background:#2d2d2d;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.paragraph-foooter{
+    color:#fff;
+    font-size:2em;
+    align:text-center;
+}
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 40em) {
+  /* Bump up size of carousel content */
+  .carousel-caption p {
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 62em) {
+  .featurette-heading {
+    margin-top: 7rem;
+  }
+}
+@media (min-width: 992px)
+{   .col-lg-4{
+    }}
+
+.col-md-9 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 75%;
+    flex: 0 0 75%;
+    max-width: 75%;
+    padding-left: 28px;
+}
+.order-md-2 {
+    -webkit-box-ordinal-group: 3;
+    -ms-flex-order: 2;
+    order: 2;
+    padding-right: 28px;
+

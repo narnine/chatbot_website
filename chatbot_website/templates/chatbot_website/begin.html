@@ -1,0 +1,40 @@
+{% extends "chatbot_website/base.html" %}
+
+<title>Наше время</title>
+{% block content %}
+    <div class="article-three">
+    {% if article_three %}
+        {% for article_three in article_three %}
+            <div class="text-center">
+                <h3>{{ article_three.title }}</h3>
+            </div>
+            <div class="row featurette">
+                <div  class="col-md-9">
+                    <h4>{{ article_three.title_first }}</h4>
+                    <p class="paragraph-three">{{ article_three.text_first }}</p>
+                </div>
+                <div class="col-md-3" class="imagearticlethree" >
+                        <img class="image-article-one" src="{{ article_three.image_first.url}}" >
+                </div>
+            </div>
+                <hr>
+            <div class="row featurette">
+                <div class="col-md-7 order-md-2">
+                    <h4 class="text-right">{{ article_three.title_second }}</h4>
+                    <p class="paragraph-three">{{ article_three.text_second }}</p>
+                </div>
+                <div class="col-md-4 order-md-1" class="image-article-three" >
+                        <img class="image-article-one" src="{{ article_three.image_second.url}}" >
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="row">
+            <div class="col-sm">
+                <p>No articles are available.</p>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+{% endblock %}
+
