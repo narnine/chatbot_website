@@ -3,6 +3,9 @@ from .models import Article_One
 from .models import Article_Two
 from .models import Article_Three
 from .models import Article_Fourth
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 # Create your views here.
 def index(request):
     article_one = Article_One.objects.filter(title='Чат-боты. Что это такое?')
@@ -21,3 +24,11 @@ def ourtime(request):
     article_four = Article_One.objects.filter(title='Duolingo')
     article_five = Article_Fourth.objects.filter(title_first='Rose')
     return render(request, 'chatbot_website/ourtime.html', {'article_one': article_one, 'article_two': article_two, 'article_three': article_three, 'article_four': article_four, 'article_five': article_five})
+
+cloudinary.config(
+  cloud_name = "dutifxbda",
+  api_key = "333126896845945",
+  api_secret = "IShvaI-vLwXGI-ckJl35rDkM9VY"
+)
+
+
