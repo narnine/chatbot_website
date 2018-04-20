@@ -1,5 +1,5 @@
 {% extends "chatbot_website/base.html" %}
-<title>Предпоссылки</title>
+<title>Простые чат-боты</title>
 {% block content %}
     <div class="article-one">
     {% if article_one %}
@@ -9,7 +9,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <p class="paragraph-one"> <img class="img1" width="550" height="450" src="{{ article_one.image.url}}" > {{ article_one.text }}</p>
+                    <p class="paragraph-one"><img class="img1" height="256" width="256" src="{{ article_one.image.url}}" >{{ article_one.text }}</p>
 
                 </div>
             </div>
@@ -22,6 +22,7 @@
         </div>
     {% endif %}
     </div>
+
 
     <div class="article-two">
     {% if article_two %}
@@ -52,14 +53,9 @@
     {% else %}
         <div class="row">
             <div class="col-sm">
-                <p class="paragraph-three" >No articles are available.</p>
+                <p class="paragraph-two" >No articles are available.</p>
             </div>
         </div>
     {% endif %}
     </div>
-
-
-
-
 {% endblock %}
-

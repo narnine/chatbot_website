@@ -1,0 +1,28 @@
+
+{% extends "chatbot_website/base.html" %}
+<title>Будущее</title>
+{% block content %}
+    <div class="article-one">
+    {% if article_one %}
+        {% for article_one in article_one %}
+            <div class="text-center">
+                <h2>{{ article_one.title }}</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="paragraph-one"> <img class="img1" height="256" width="256" src="{{ article_one.image.url}}" > {{ article_one.text }}</p>
+
+                    </div>
+
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="row">
+            <div class="col-sm">
+                <p>No articles are available.</p>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+{% endblock %}
+
