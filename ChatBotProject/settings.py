@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cq++gv!i5vh#+w2_hu$)tw5n2p1m-n@8629ko@0aqzgte^&bz4')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['the-chatting-bot.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -125,7 +125,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATIC_URL = '/static/chatbot_website/'
+STATIC_URL = '/static/chatbot_website/css/style/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
