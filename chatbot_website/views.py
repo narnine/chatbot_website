@@ -50,6 +50,7 @@ def example(request):
 def blog(request):
     return render(request, 'chatbot_website/blog.html')
 
+
 cloudinary.config(
   cloud_name = "dutifxbda",
   api_key = "333126896845945",
