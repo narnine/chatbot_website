@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Article_One
 from .models import Article_Two
@@ -46,7 +47,8 @@ def example(request):
     article_five = Article_One.objects.filter(title='Melody')
     return render(request, 'chatbot_website/example.html', {'article_one': article_one,  'article_two': article_two, 'article_three': article_three, 'article_four': article_four, 'article_five': article_five})
 
-
+def blog(request):
+    return render(request, 'chatbot_website/blog.html')
 
 cloudinary.config(
   cloud_name = "dutifxbda",
