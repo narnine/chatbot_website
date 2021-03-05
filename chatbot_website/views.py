@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import Article_One
+from .models import Article_One, News
 from .models import Article_Two
 from .models import Article_Three
 
@@ -48,7 +48,12 @@ def example(request):
     return render(request, 'chatbot_website/example.html', {'article_one': article_one,  'article_two': article_two, 'article_three': article_three, 'article_four': article_four, 'article_five': article_five})
 
 def blog(request):
-    return render(request, 'chatbot_website/blog.html')
+    news = News.objects.all()
+    #res = '<h1>Список Новостей</h1>'
+    #for item in news:
+    #    res += f'<div>\n<p>{item.title}</p>\n<p>{item.content}</p>\n</div>\n<hr>\n'
+    #return HttpResponse(res)
+    return render(request, 'chatbot_website/blog.html', {'news': news, 'title': 'Список новостей'})
 
 
 cloudinary.config(

@@ -1,7 +1,25 @@
 {% extends "chatbot_website/base.html" %}
-<title>Предпоссылки</title>
+<title>{{ title }}</title>
 {% block content %}
 <div class="container gradient">
+
+{% for item in news %}
+<hr>
+    <p>
+        {{ item.title }}
+    </p>
+    <p>
+        {{item.content}}
+    </p>
+    <p>
+        {{item.created_at | date:"Y-m-d H:i"}}
+    </p>
+    <img src = "{{item.photo}}">
+    </hr>
+</div>
+
+{% endfor %}
+
 
 </div>
 {% endblock %}
