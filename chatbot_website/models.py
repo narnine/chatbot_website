@@ -35,6 +35,7 @@ class News(models.Model):
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Обновленно')
     photo = models.ImageField(blank=True, upload_to='static/chatbot_website/img/%Y/%m/%d/', verbose_name='Опубликовано')
     is_published = models.BooleanField(default=True)
+    category = models.ForeignKey('Category', on_delete=models.PROTECT, null=True, verbose_name='Категория')
 
     def __str__(self):
         return self.title
@@ -44,8 +45,16 @@ class News(models.Model):
         verbose_name_plural = 'Новости'
         ordering = ['-created_at']
 
+class Category(models.Model):
+    title = models.CharField(max_length=100, db_index=True, verbose_name='Категория')
 
+    def __str__(self):
+        return self.title
 
+    class Meta:
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
+        ordering = ['title']
 
 
 
