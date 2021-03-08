@@ -1,25 +1,28 @@
 {% extends "chatbot_website/base.html" %}
-<title>{{ title }}</title>
 {% block content %}
-<div class="container gradient">
-
-{% for item in news %}
-<hr>
-    <p>
-        {{ item.title }}
-    </p>
-    <p>
-        {{item.content}}
-    </p>
-    <p>
-        {{item.created_at | date:"Y-m-d H:i"}}
-    </p>
-    <img src = "{{item.photo}}">
-    </hr>
-</div>
-
-{% endfor %}
-
+<div class="gradient">
+    <div class="container mt-3">
+        <h1>{{title}}</h1>
+        <div class="row">
+            <div class=".col-md-12">
+                {% for item in news %}
+                <div class="card mb-3">
+                    <div class="card-header">
+                        Категория: {{item.category}}
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.title}}</h5>
+                        <p class="card-text">{{item.content}}</p>
+                        <a href="#" class="btn btn-primary">Read more..</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        {{ item.created_at|date:"Y-m-d H:i" }}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 
 </div>
 {% endblock %}
