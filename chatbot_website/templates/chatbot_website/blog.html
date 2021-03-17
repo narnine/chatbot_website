@@ -1,46 +1,51 @@
-{% extends "chatbot_website/base.html" %}
+{% extends "chatbot_website/base_blog.html" %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block category %}
+{{ title }}
+{% endblock %}
+
+{% block sidebar %}
+<div class="col-md-3">
+    {% for item in categories %}
+    <div class="list-group">
+        <a href="{% url 'category' item.pk %}" class="list-group-item list-group-item-action"
+           aria-current="true">
+            {{ item.title }}
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
 {% block content %}
-<div class="gradient">
-    <div class="container pt-5">
-        <div class="row">
-            <h1 class="pt-2">{{title}}</h1>
-            <div class="col-md-3">
-                {% for item in categories %}
-                <div class="list-group">
-                    <a href="/category/{{ item.pk }}" class="list-group-item list-group-item-action"
-                       aria-current="true">
-                        {{ item.title }}
-                    </a>
+<div class="col-md-9">
+    {% for item in news %}
+    <div class="card mb-3">
+        <div class="card-header">
+            Категория: <a href="{% url 'category' item.pk %}">{{item.category}}</a>
+        </div>
+        <div class="card-body">
+            <div class="media">
+                {% if item.photo%}
+                <img class="media__image mr-3" src="{{ item.photo.url }}" alt="" width="350px" height="280px"/>
+                {% else %}
+                <img class="media__image" src="https://picsum.photos/seed/picsum/536/350" width="350px"  alt=""/>
+                {% endif %}
+                <div class="media-body">
+                    <h5 class="card-title">{{item.title}}</h5>
+                    <p class="card-text">{{item.content|linebreaksbr|truncatewords:75 }}</p>
+                    <a href="#" class="btn btn-primary">Read more..</a>
                 </div>
-                {% endfor %}
-            </div>
-            <div class="col-md-9">
-                {% for item in news %}
-                <div class="card mb-3">
-                    <div class="card-header">
-                        Категория: {{item.category}}
-                    </div>
-                    <div class="card-body">
-                        <div class="media">
-                            {% if item.photo%}
-                            <img src="{{ item.photo.url }}" alt="" width="300px" height="400px" class="ml-3"/>
-                            {% else %}
-                            <img src="https://picsum.photos/seed/picsum/536/350" alt="" class="mr-3"/>
-                            {% endif %}
-                            <div class="media-body">
-                                <h5 class="card-title">{{item.title}}</h5>
-                                <p class="card-text">{{item.content|linebreaksbr|truncatewords:100 }}</p>
-                                <a href="#" class="btn btn-primary">Read more..</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-footer text-muted">
-                        {{ item.created_at|date:"Y-m-d H:i" }}
-                    </div>
-                </div>
-                {% endfor %}
             </div>
         </div>
+        <div class="card-footer text-muted">
+            {{ item.created_at|date:"Y-m-d H:i" }}
+        </div>
     </div>
+    {% endfor %}
 </div>
 {% endblock %}

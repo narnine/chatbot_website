@@ -11,13 +11,16 @@
 </head>
 <body>
 
-
 {% include 'chatbot_website/inc/_nav.html' %}
-
-
-{% block content %}
-
-{% endblock %}
+<div class="gradient">
+    <div class="container pt-5">
+        <div class="row">
+                <h1 class="container pt-5">{% block category %} Title {% endblock %}</h1>
+                {% block sidebar %} SIDEBAR {% endblock %}
+                {% block content %} CONTENT {% endblock %}
+        </div>
+    </div>
+</div>
 
 {% include 'chatbot_website/inc/_footer.html' %}
 
@@ -35,3 +38,4 @@
 
 
 </html>
+

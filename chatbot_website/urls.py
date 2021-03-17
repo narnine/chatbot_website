@@ -12,6 +12,5 @@ urlpatterns = [
     path(r'hard', views.hard, name='hard'),
     path(r'example', views.example, name='example'),
     path(r'blog', views.blog, name='blog'),
-    path(r'category/<int:category_id>/', views.get_category, name='get_category')
-
+path(r'category/<int:category_id>/', views.get_category, name='category')
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

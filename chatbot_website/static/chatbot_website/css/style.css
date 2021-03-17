@@ -33,7 +33,7 @@ p {
     padding-right: 20px !important;
  }
 
-.navbar-brad img {
+.navbar-brad > img {
     width: 40px;
 }
 
@@ -77,22 +77,6 @@ p {
 }
 
 
-
-/* Declare heights because of positioning of img element */
-
-.carousel-inner {
-    height: 450px;
-}
-
-.carousel-inner img{
- height: 100%;
- }
-
-@media (min-width: 1100px){
- .carousel-inner img{
- width: 100%;
- }
-}
 
 
 
@@ -295,4 +279,8 @@ hr {
 
 .media {
     display:flex;
+}
+
+.media__image {
+    margin-right: 25px;
 }
