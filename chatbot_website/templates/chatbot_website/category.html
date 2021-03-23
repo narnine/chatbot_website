@@ -9,20 +9,10 @@
 {% endblock %}
 
 {% block sidebar %}
-<div class="col-md-3">
-    {% for item in categories %}
-    <div class="list-group">
-        <a href="{% url 'category' item.pk %}" class="list-group-item list-group-item-action"
-           aria-current="true">
-            {{ item.title }}
-        </a>
-    </div>
-    {% endfor %}
-</div>
+{% include 'chatbot_website/inc/_sidebar.html' %}
 {% endblock %}
 
 {% block content %}
-<div class="col-md-9">
     {% for item in news %}
     <div class="card mb-3">
         <div class="card-header">
@@ -47,5 +37,4 @@
         </div>
     </div>
     {% endfor %}
-</div>
 {% endblock %}
