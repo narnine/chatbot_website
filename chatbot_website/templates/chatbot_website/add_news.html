@@ -1,0 +1,26 @@
+{% extends "chatbot_website/base_blog.html" %}
+
+{% block title %}
+{{ news_item.title }} :: {{ block.super }}
+{% endblock %}
+
+{% block category %}
+<h1> Добавление новости </h1>
+{% endblock %}
+
+{% block sidebar %}
+{% include 'chatbot_website/inc/_sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+<form action="{% url 'add_news' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button
+            type="submit"
+            class="btn btn-primary btn-block">
+        Добавить Новость
+    </button>
+</form>
+
+{% endblock %}

@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Article_One, News, Category
 from .models import Article_Two
 from .models import Article_Three
+from .forms import NewsForm
 
 import cloudinary
 import cloudinary.uploader
@@ -67,6 +68,13 @@ def view_news(request, news_id):
     # news_item = News.objects.get(pk=news_id)
     news_item = get_object_or_404(News, pk=news_id)
     return render(request, template_name='chatbot_website/view_news.html', context={"news_item": news_item})
+
+def add_news(request):
+    if request.method == 'POST':
+        pass
+    else:
+        form = NewsForm()
+    return render(request, template_name='chatbot_website/add_news.html', context={'form': form})
 
 cloudinary.config(
   cloud_name = "dutifxbda",
