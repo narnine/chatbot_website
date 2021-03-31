@@ -11,10 +11,6 @@ body {
     background: linear-gradient(135deg, #8363a1 0%, #56b4d3 100%);
 }
 
-p {
-    margin:0;
-}
-
 .carousel-caption h2, .h2 {
     padding-bottom: 0px !important;
 }
@@ -54,6 +50,19 @@ p {
     z-index: 1030;
 }
 
+.form-group{
+    margin-bottom: 25px;
+}
+
+form__add-news {
+    color: #fff;
+    font-family: Roboto, sans-serif;
+    FONT-SIZE: 17px;
+ }
+
+.errorlist{
+color: red;
+}
 
 .btn-warning {
     color: #ffffff;

@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Article_One, News, Category
 from .models import Article_Two
 from .models import Article_Three
@@ -71,7 +71,11 @@ def view_news(request, news_id):
 
 def add_news(request):
     if request.method == 'POST':
-        pass
+        form = NewsForm(request.POST)
+        if form.is_valid():
+            # print(form.cleaned_data)
+            news = News.objects.create(**form.cleaned_data)
+            return redirect(news)
     else:
         form = NewsForm()
     return render(request, template_name='chatbot_website/add_news.html', context={'form': form})
