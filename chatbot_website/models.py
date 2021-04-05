@@ -50,6 +50,8 @@ class News(models.Model):
     is_published = models.BooleanField(default=True)
     category = models.ForeignKey('Category', on_delete=models.PROTECT, verbose_name='Категория')
 
+
+
     def get_absolute_url(self):
         return reverse('view_news', kwargs={"news_id": self.pk})
 
