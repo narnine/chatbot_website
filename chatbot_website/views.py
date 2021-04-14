@@ -7,6 +7,8 @@ from .forms import NewsForm
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+from django.views.generic import ListView
+
 # Create your views here.
 def index(request):
     article_one = Article_One.objects.filter(title='Введение')
@@ -46,6 +48,20 @@ def example(request):
     article_four = Article_One.objects.filter(title='A.I. Jim')
     article_five = Article_One.objects.filter(title='Melody')
     return render(request, 'chatbot_website/example.html', {'article_one': article_one,  'article_two': article_two, 'article_three': article_three, 'article_four': article_four, 'article_five': article_five})
+
+class BlogNews(ListView):
+    model = News
+    template_name = 'chatbot_website/blog_news_list.html'
+    context_object_name = 'news'
+    # extra_context = {'title': 'Блог'}
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Блог'
+        return context
+
+    def get_queryset(self):
+        return News.objects.filter(is_published = True)
 
 def blog(request):
     news = News.objects.all()
