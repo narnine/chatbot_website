@@ -7,7 +7,7 @@ from .forms import NewsForm
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 
 # Create your views here.
 def index(request):
@@ -97,6 +97,10 @@ class ViewNews(DetailView):
     # required slug or id
     # pk_url_kwarg = 'news_id'
 
+class CreateNews(CreateView):
+    form_class = NewsForm
+    template_name = 'chatbot_website/add_news.html'
+
 def get_category(request, category_id):
     news = News.objects.filter(category_id=category_id)
     category = Category.objects.get(pk=category_id)
@@ -111,17 +115,17 @@ def get_category(request, category_id):
 #     news_item = get_object_or_404(News, pk=news_id)
 #     return render(request, template_name='chatbot_website/view_news.html', context={"news_item": news_item})
 
-def add_news(request):
-    if request.method == 'POST':
-        form = NewsForm(request.POST)
-        if form.is_valid():
-            # print(form.cleaned_data)
-            # news = News.objects.create(**form.cleaned_data)
-            news = form.save()
-            return redirect(news)
-    else:
-        form = NewsForm()
-    return render(request, template_name='chatbot_website/add_news.html', context={'form': form})
+# def add_news(request):
+#     if request.method == 'POST':
+#         form = NewsForm(request.POST)
+#         if form.is_valid():
+#             # print(form.cleaned_data)
+#             # news = News.objects.create(**form.cleaned_data)
+#             news = form.save()
+#             return redirect(news)
+#     else:
+#         form = NewsForm()
+#     return render(request, template_name='chatbot_website/add_news.html', context={'form': form})
 
 cloudinary.config(
   cloud_name = "dutifxbda",
