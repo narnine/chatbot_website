@@ -7,7 +7,7 @@ from .forms import NewsForm
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 # Create your views here.
 def index(request):
@@ -73,6 +73,7 @@ class NewsByCategory(ListView):
     # forbid show a news doesn't exits
     allow_empty = False
 
+    # override context of data
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = Category.objects.get(pk = self.kwargs['category_id'])
@@ -90,6 +91,12 @@ def blog(request):
     }
     return render(request, template_name='chatbot_website/blog.html', context=context)
 
+class ViewNews(DetailView):
+    model = News
+    context_object_name = 'news_item'
+    # required slug or id
+    # pk_url_kwarg = 'news_id'
+
 def get_category(request, category_id):
     news = News.objects.filter(category_id=category_id)
     category = Category.objects.get(pk=category_id)
@@ -99,10 +106,10 @@ def get_category(request, category_id):
     }
     return render(request, template_name='chatbot_website/category.html', context=context)
 
-def view_news(request, news_id):
-    # news_item = News.objects.get(pk=news_id)
-    news_item = get_object_or_404(News, pk=news_id)
-    return render(request, template_name='chatbot_website/view_news.html', context={"news_item": news_item})
+# def view_news(request, news_id):
+#     # news_item = News.objects.get(pk=news_id)
+#     news_item = get_object_or_404(News, pk=news_id)
+#     return render(request, template_name='chatbot_website/view_news.html', context={"news_item": news_item})
 
 def add_news(request):
     if request.method == 'POST':
