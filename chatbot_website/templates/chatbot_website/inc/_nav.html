@@ -11,8 +11,7 @@
             <ul class="navbar-nav mr-auto">
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle " id="navbarDropdown1" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">История</a>
+                    <a class="nav-link dropdown-toggle " id="dropdown" data-toggle="dropdown">История</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown">
                         <a class="dropdown-item " href="{% url 'begin' %}">Предпосылки</a>
                         <a class="dropdown-item" href="{% url 'ourtime' %}">Наше время</a>
@@ -20,9 +19,8 @@
                     </div>
                 </li>
 
-                <li class="nav-item ">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown2" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">Виды</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown">Виды</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown">
                         <a class="dropdown-item" href="{% url 'simple' %}">Простые</a>
                         <a class="dropdown-item" href="{% url 'hard' %}">Сложные</a>
