@@ -49,7 +49,7 @@ class News(models.Model):
     photo = models.ImageField(blank=True, upload_to='static/chatbot_website/img/%Y/%m/%d/', verbose_name='Опубликовано')
     is_published = models.BooleanField(default=True)
     category = models.ForeignKey('Category', on_delete=models.PROTECT, verbose_name='Категория')
-
+    views = models.IntegerField(default=0)
 
 
     def get_absolute_url(self):
