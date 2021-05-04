@@ -58,6 +58,7 @@ class BlogNews(MyMixin, ListView):
     context_object_name = 'news'
     mixin_prop = 'hello world'
     # extra_context = {'title': 'Блог'}
+    paginate_by = 4
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -87,6 +88,7 @@ class NewsByCategory(MyMixin, ListView):
     def get_queryset(self):
         return News.objects.filter(category_id = self.kwargs['category_id'],
                                    is_published = True).select_related('category')
+    paginate_by = 4
 
 def blog(request):
     news = News.objects.all()
