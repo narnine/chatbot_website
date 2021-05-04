@@ -3,11 +3,14 @@ from .models import Article_One, News, Category
 from .models import Article_Two
 from .models import Article_Three
 from .forms import NewsForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 from django.views.generic import ListView, DetailView, CreateView
+from .utils import MyMixin
+
 
 # Create your views here.
 def index(request):
@@ -49,21 +52,23 @@ def example(request):
     article_five = Article_One.objects.filter(title='Melody')
     return render(request, 'chatbot_website/example.html', {'article_one': article_one,  'article_two': article_two, 'article_three': article_three, 'article_four': article_four, 'article_five': article_five})
 
-class BlogNews(ListView):
+class BlogNews(MyMixin, ListView):
     model = News
     template_name = 'chatbot_website/blog_news_list.html'
     context_object_name = 'news'
+    mixin_prop = 'hello world'
     # extra_context = {'title': 'Блог'}
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Блог'
+        context['mixin_prop'] = self.get_prop()
         return context
 
     def get_queryset(self):
         return News.objects.filter(is_published = True).select_related('category')
 
-class NewsByCategory(ListView):
+class NewsByCategory(MyMixin, ListView):
     # model from we get all data
     model = News
     # template page
@@ -97,9 +102,11 @@ class ViewNews(DetailView):
     # required slug or id
     # pk_url_kwarg = 'news_id'
 
-class CreateNews(CreateView):
+class CreateNews(LoginRequiredMixin, CreateView):
     form_class = NewsForm
     template_name = 'chatbot_website/add_news.html'
+    login_url = '/admin/'
+
 
 def get_category(request, category_id):
     news = News.objects.filter(category_id=category_id)
