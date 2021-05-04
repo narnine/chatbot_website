@@ -61,7 +61,7 @@ class BlogNews(ListView):
         return context
 
     def get_queryset(self):
-        return News.objects.filter(is_published = True)
+        return News.objects.filter(is_published = True).select_related('category')
 
 class NewsByCategory(ListView):
     # model from we get all data
@@ -81,7 +81,7 @@ class NewsByCategory(ListView):
 
     def get_queryset(self):
         return News.objects.filter(category_id = self.kwargs['category_id'],
-                                   is_published = True)
+                                   is_published = True).select_related('category')
 
 def blog(request):
     news = News.objects.all()
