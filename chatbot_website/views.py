@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Article_One, News, Category
 from .models import Article_Two
 from .models import Article_Three
-from .forms import NewsForm, UserRegisterForm
+from .forms import NewsForm, UserRegisterForm, UserLoginForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 
@@ -11,6 +11,7 @@ import cloudinary.uploader
 import cloudinary.api
 from django.views.generic import ListView, DetailView, CreateView
 from .utils import MyMixin
+from django.contrib.auth import login, logout
 
 
 # Create your views here.
@@ -124,17 +125,32 @@ def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            login(request, user)
             messages.success(request, 'Регистрация прошла успешно')
-            return redirect('login')
+            return redirect('index')
         else:
             messages.error(request, 'Ошибка регистрация')
     else:
         form = UserRegisterForm()
     return render(request, template_name='chatbot_website/register.html', context={ 'form' : form })
 
-def login(request):
-    return render(request, template_name='chatbot_website/login.html')
+def user_login(request):
+    if request.method == 'POST':
+        form = UserLoginForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('index')
+        else:
+            messages.error(request, 'Ошибка регистрация')
+    else:
+        form = UserLoginForm()
+    return render(request, template_name='chatbot_website/login.html', context={ 'form' : form })
+
+def user_logout(request):
+    logout(request)
+    return redirect('index')
 
 # def view_news(request, news_id):
 #     # news_item = News.objects.get(pk=news_id)

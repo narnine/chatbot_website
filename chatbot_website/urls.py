@@ -1,6 +1,6 @@
 from django.urls import path
 
-from chatbot_website.views import BlogNews, NewsByCategory, ViewNews, CreateNews, register, login
+from chatbot_website.views import BlogNews, NewsByCategory, ViewNews, CreateNews, register, user_login, user_logout
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -21,7 +21,8 @@ urlpatterns = [
     path(r'category/<int:category_id>/', NewsByCategory.as_view(), name='category'),
     path(r'news/<int:pk>/', ViewNews.as_view(), name='view_news'),
     path(r'news/add-news/', CreateNews.as_view(), name='add_news'),
-    path(r'login/', login, name='login'),
-    path(r'register/', register, name='register')
+    path(r'login/', user_login, name='login'),
+    path(r'register/', register, name='register'),
+    path(r'logout/', user_logout, name='logout')
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

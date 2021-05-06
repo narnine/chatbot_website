@@ -14,6 +14,13 @@
 
 {% block content %}
 
-Логин
-
+<form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button
+            type="submit"
+            class="btn btn-primary btn-block">
+        Логин
+    </button>
+</form>
 {% endblock %}
