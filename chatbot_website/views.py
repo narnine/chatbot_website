@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Article_One, News, Category
 from .models import Article_Two
 from .models import Article_Three
-from .forms import NewsForm
+from .forms import NewsForm, UserRegisterForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 
@@ -11,7 +11,6 @@ import cloudinary.uploader
 import cloudinary.api
 from django.views.generic import ListView, DetailView, CreateView
 from .utils import MyMixin
-from django.contrib.auth.forms import UserCreationForm
 
 
 # Create your views here.
@@ -123,7 +122,7 @@ def get_category(request, category_id):
 
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, 'Регистрация прошла успешно')
@@ -131,7 +130,7 @@ def register(request):
         else:
             messages.error(request, 'Ошибка регистрация')
     else:
-        form = UserCreationForm()
+        form = UserRegisterForm()
     return render(request, template_name='chatbot_website/register.html', context={ 'form' : form })
 
 def login(request):
