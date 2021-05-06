@@ -4,12 +4,14 @@ from .models import Article_Two
 from .models import Article_Three
 from .forms import NewsForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
 
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 from django.views.generic import ListView, DetailView, CreateView
 from .utils import MyMixin
+from django.contrib.auth.forms import UserCreationForm
 
 
 # Create your views here.
@@ -118,6 +120,22 @@ def get_category(request, category_id):
         'category': category,
     }
     return render(request, template_name='chatbot_website/category.html', context=context)
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Регистрация прошла успешно')
+            return redirect('login')
+        else:
+            messages.error(request, 'Ошибка регистрация')
+    else:
+        form = UserCreationForm()
+    return render(request, template_name='chatbot_website/register.html', context={ 'form' : form })
+
+def login(request):
+    return render(request, template_name='chatbot_website/login.html')
 
 # def view_news(request, news_id):
 #     # news_item = News.objects.get(pk=news_id)
