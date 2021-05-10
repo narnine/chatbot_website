@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cq++gv!i5vh#+w2_hu$)tw5n2p1m-n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://the-chatting-bot.herokuapp.com/']
 
 
 # Application definition
