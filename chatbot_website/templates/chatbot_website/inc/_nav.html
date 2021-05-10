@@ -40,7 +40,7 @@
 
             </ul>
             {% if request.user.is_authenticated %}
-                Welcome, {{ user.username }} | <a class="nav-link" href="{% url 'logout' %}">Выход</a>
+            <span class="navbar-text"> Welcome, {{ user.username }}  </span>  | <a class="nav-link" href="{% url 'logout' %}">Выход</a>
             {% else %}
             <span class="navbar-text">
             <a href="{% url 'register' %}">Регистрация</a> | <a href="{% url 'login' %}">Авторизация</a>

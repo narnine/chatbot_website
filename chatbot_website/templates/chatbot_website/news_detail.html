@@ -19,10 +19,10 @@
     </div>
     <div class="card-body">
             {% if news_item.photo%}
-            <img class="media__image mr-3 float-left" src="{{ news_item.photo.url }}" alt="" width="350px"
+            <img class="media__image mr-3 float-left" src="{{ news_item.photo.url }}" alt=""  width="350px"
                  height="280px"/>
             {% else %}
-            <img class="media__image mr-3" src="https://picsum.photos/seed/picsum/536/350" width="350px" height="280px"
+            <img class="media__image mr-3 float-left" src="https://picsum.photos/seed/picsum/536/350" width="350px" height="280px"
                  alt=""/>
             {% endif %}
                 <h5 class="card-title">{{news_item.title}}</h5>
